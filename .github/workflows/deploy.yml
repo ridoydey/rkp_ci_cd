@@ -47,7 +47,7 @@ jobs:
             echo "Project built successfully."
 
             echo "Checking and installing PM2..."
-            pm2 -v || npm install -g pm2 --unsafe-perm
+            pm2 -v || sudo npm install -g pm2 --unsafe-perm
             echo "PM2 installed successfully."
 
             echo "Starting the server using PM2..."
