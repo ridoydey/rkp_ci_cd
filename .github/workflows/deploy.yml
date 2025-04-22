@@ -46,11 +46,12 @@ jobs:
             npm run build
             echo "Project built successfully."
 
-            echo "Installing PM2..."
-            npm install -g pm2
+            echo "Checking and installing PM2..."
+            pm2 -v || npm install -g pm2 --unsafe-perm
             echo "PM2 installed successfully."
 
             echo "Starting the server using PM2..."
-            pm2 restart all || pm2 start "npm start"
+            pm2 restart all || pm2 start npm -- start
             pm2 save
+
 
