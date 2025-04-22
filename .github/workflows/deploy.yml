@@ -22,4 +22,6 @@ jobs:
           key: ${{ secrets.PRIVATE_SSH_KEY }}
           port: 22
           script: |
-            ls
+            echo "Attempting to clone the repository..."
+            git clone git@github.com:ridoydey/rkp_ci_cd.git || (cd rkp_ci_cd && git pull origin main)
+            echo "Repository cloned successfully."
