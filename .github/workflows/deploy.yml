@@ -34,7 +34,17 @@ jobs:
             echo "Repository cloned successfully."
             echo "Navigating to the project directory..."
             cd rkp_ci_cd
-            
+
+            echo "Removing previous build to free up space..."
+            rm -rf .next
+
+            echo "Creating swap space..."
+            sudo fallocate -l 1G /swapfile
+            sudo chmod 600 /swapfile
+            sudo mkswap /swapfile
+            sudo swapon /swapfile
+            echo "Swap space enabled!"
+
             echo "Installing dependencies..."
             npm install
             echo "Dependencies installed successfully."
@@ -43,5 +53,11 @@ jobs:
             npm run build
             echo "Project built successfully."
 
-            echo "Starting the server..."
-            npm run dev
+            echo "Installing PM2..."
+            npm install -g pm2
+            echo "PM2 installed successfully."
+
+            echo "Starting the server using PM2..."
+            pm2 restart all || pm2 start npm -- start
+            pm2 save
+
