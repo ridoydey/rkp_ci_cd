@@ -34,10 +34,7 @@ jobs:
             echo "Repository cloned successfully."
             echo "Navigating to the project directory..."
             cd rkp_ci_cd
-
-            echo "Checking Node.js installation..."
-            node -v || (echo "Installing Node.js..." && sudo apt update && sudo apt install -y nodejs npm)
-
+            
             echo "Installing dependencies..."
             npm install
             echo "Dependencies installed successfully."
