@@ -38,13 +38,6 @@ jobs:
             echo "Removing previous build to free up space..."
             rm -rf .next
 
-            echo "Creating swap space..."
-            sudo fallocate -l 1G /swapfile
-            sudo chmod 600 /swapfile
-            sudo mkswap /swapfile
-            sudo swapon /swapfile
-            echo "Swap space enabled!"
-
             echo "Installing dependencies..."
             npm install
             echo "Dependencies installed successfully."
