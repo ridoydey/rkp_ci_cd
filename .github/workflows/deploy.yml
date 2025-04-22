@@ -25,3 +25,13 @@ jobs:
             echo "Attempting to clone the repository..."
             git clone git@github.com:ridoydey/rkp_ci_cd.git || (cd rkp_ci_cd && git pull origin main)
             echo "Repository cloned successfully."
+            echo "Navigating to the project directory..."
+            cd rkp_ci_cd
+            echo "Installing dependencies..."
+            npm install
+            echo "Dependencies installed successfully."
+            echo "Building the project..."
+            npm run build
+            echo "Project built successfully."
+            echo "Starting the server..."
+            npm run dev
