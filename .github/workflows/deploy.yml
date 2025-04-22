@@ -23,3 +23,4 @@ jobs:
           port: 22
           script: |
             ls
+            git clone git@github.com:ridoydey/rkp_ci_cd.git
